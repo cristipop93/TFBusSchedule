@@ -141,7 +141,6 @@ def train_model(learning_rate, steps, batch_size, input_feature="hour"):
     plt.title("Root Mean Squared Error vs. Periods")
     plt.tight_layout()
     plt.plot(root_mean_squared_errors)
-    plt.show()
 
     # Output a table with calibration data.
     calibration_data = pd.DataFrame()
@@ -150,9 +149,10 @@ def train_model(learning_rate, steps, batch_size, input_feature="hour"):
     display.display(calibration_data.describe())
 
     print("Final RMSE (on training data): %0.2f" % root_mean_squared_error)
+    plt.show()
 
 train_model(
-    learning_rate=0.00002,
+    learning_rate=0.3,
     steps=500,
-    batch_size=5
+    batch_size=50
 )
