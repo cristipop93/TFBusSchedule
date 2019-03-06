@@ -24,16 +24,16 @@ buss_data = buss_data.reindex(
 print(buss_data.describe())
 
 # Define the input feature: total_rooms.
-my_feature = buss_data[["day"]]
+my_feature = buss_data[["hour"]]
 
 # Configure a numeric feature column for total_rooms.
-feature_columns = [tf.feature_column.numeric_column("day")]
+feature_columns = [tf.feature_column.numeric_column("hour")]
 
 # Define the label.
 targets = buss_data["secondsDelay"]
 
 # Use gradient descent as the optimizer for training the model.
-my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.0000001)
+my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.00001)
 my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
 
 # Configure the linear regression model with our feature columns and optimizer.
@@ -94,3 +94,45 @@ mean_squared_error = metrics.mean_squared_error(predictions, targets)
 root_mean_squared_error = math.sqrt(mean_squared_error)
 print("Mean Squared Error (on training data): %0.3f" % mean_squared_error)
 print("Root Mean Squared Error (on training data): %0.3f" % root_mean_squared_error)
+
+
+min_seconds_delay = buss_data["secondsDelay"].min()
+max_seconds_delay = buss_data["secondsDelay"].max()
+min_max_difference = max_seconds_delay - min_seconds_delay
+
+print("Min. seconds delay: %0.3f" % min_seconds_delay)
+print("Max. seconds delay: %0.3f" % max_seconds_delay)
+print("Difference between Min. and Max.: %0.3f" % min_max_difference)
+print("Root Mean Squared Error: %0.3f" % root_mean_squared_error)
+
+calibration_data = pd.DataFrame()
+calibration_data["predictions"] = pd.Series(predictions)
+calibration_data["targets"] = pd.Series(targets)
+print(calibration_data.describe())
+
+sample = buss_data.sample(n=1000)
+
+# Get the min and max total_rooms values.
+x_0 = sample["hour"].min()
+x_1 = sample["hour"].max()
+
+# Retrieve the final weight and bias generated during training.
+weight = linear_regressor.get_variable_value('linear/linear_model/hour/weights')[0]
+bias = linear_regressor.get_variable_value('linear/linear_model/bias_weights')
+
+# Get the predicted median_house_values for the min and max total_rooms values.
+y_0 = weight * x_0 + bias
+y_1 = weight * x_1 + bias
+
+# Plot our regression line from (x_0, y_0) to (x_1, y_1).
+plt.plot([x_0, x_1], [y_0, y_1], c='r')
+
+# Label the graph axes.
+plt.ylabel("secondsDelay")
+plt.xlabel("hour")
+
+# Plot a scatter plot from our data sample.
+plt.scatter(sample["hour"], sample["secondsDelay"])
+
+# Display graph.
+plt.show()
