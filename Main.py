@@ -153,6 +153,6 @@ def train_model(learning_rate, steps, batch_size, input_feature="hour"):
 
 train_model(
     learning_rate=0.3,
-    steps=500,
-    batch_size=50
+    steps=1000,
+    batch_size=100
 )
