@@ -23,10 +23,10 @@ buss_data = buss_data.reindex(
 
 print(buss_data.describe())
 
-# Define the input feature: total_rooms.
+# Define the input feature: hours.
 my_feature = buss_data[["hour"]]
 
-# Configure a numeric feature column for total_rooms.
+# Configure a numeric feature column for hours.
 feature_columns = [tf.feature_column.numeric_column("hour")]
 
 # Define the label.
@@ -112,7 +112,7 @@ print(calibration_data.describe())
 
 sample = buss_data.sample(n=1000)
 
-# Get the min and max total_rooms values.
+# Get the min and max hour values.
 x_0 = sample["hour"].min()
 x_1 = sample["hour"].max()
 
@@ -120,7 +120,7 @@ x_1 = sample["hour"].max()
 weight = linear_regressor.get_variable_value('linear/linear_model/hour/weights')[0]
 bias = linear_regressor.get_variable_value('linear/linear_model/bias_weights')
 
-# Get the predicted median_house_values for the min and max total_rooms values.
+# Get the predicted secondsDelay for the min and max hour values.
 y_0 = weight * x_0 + bias
 y_1 = weight * x_1 + bias
 
