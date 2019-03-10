@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e76dc4a1-d47e-4010-9390-824e68d9654e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +16,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="603">
               <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339932">
-              <caret line="19996" column="34" lean-forward="true" selection-start-line="19996" selection-start-column="34" selection-end-line="19996" selection-end-column="34" />
+            <state relative-caret-position="609">
+              <caret line="20000" column="36" selection-start-line="20000" selection-start-column="36" selection-end-line="20000" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -53,6 +54,7 @@
       <find>value</find>
       <find>sample</find>
       <find>plt</find>
+      <find>epoch</find>
     </findStrings>
     <replaceStrings>
       <replace>temperature</replace>
@@ -97,6 +99,9 @@
     </panes>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Python Workspace\TFBussSchedule" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python Workspace\TFBussSchedule" />
     </key>
@@ -167,12 +172,12 @@
     <frame x="1358" y="-144" width="1456" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49911818" visible="true" weight="0.23060648" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49911818" visible="true" weight="0.23060648" />
       <window_info id="Structure" order="1" sideWeight="0.50088185" side_tool="true" weight="0.23060648" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992948" visible="true" weight="0.45949537" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992948" weight="0.45949537" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997344" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -239,16 +244,19 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/learningRate03steps1000batchSize100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/data.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339932">
-          <caret line="19996" column="34" lean-forward="true" selection-start-line="19996" selection-start-column="34" selection-end-line="19996" selection-end-column="34" />
+        <state relative-caret-position="609">
+          <caret line="20000" column="36" selection-start-line="20000" selection-start-column="36" selection-end-line="20000" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="603">
           <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
