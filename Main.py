@@ -52,7 +52,7 @@ def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     return features, labels
 
 
-def train_model(learning_rate, steps, batch_size, input_feature="hour"):
+def train_model(learning_rate, steps, batch_size, input_feature="vehicleType"):
     """Trains a linear regression model of one feature.
 
     Args:
