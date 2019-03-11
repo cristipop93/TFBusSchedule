@@ -220,7 +220,7 @@ def train_model(
 
 linear_regressor = train_model(
     learning_rate=0.2,
-    steps=3000,
+    steps=8000,
     batch_size=1000,
     training_examples=training_examples,
     training_targets=training_targets,
