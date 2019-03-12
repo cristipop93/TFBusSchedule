@@ -29,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/AllFeatures.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
-              <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
+              <caret line="254" column="20" lean-forward="true" selection-start-line="254" selection-start-column="20" selection-end-line="254" selection-end-column="20" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -38,15 +38,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllFeatures.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state>
+              <caret column="80" selection-start-column="75" selection-end-column="80" />
             </state>
           </provider>
         </entry>
@@ -112,7 +107,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,13 +118,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python Workspace\TFBussSchedule" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Python Workspace\TFBussSchedule" />
     </key>
   </component>
@@ -297,6 +292,9 @@
     <entry file="file://$PROJECT_DIR$/learningRate03steps1000batchSize100.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/AllFeatures.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -307,20 +305,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AllFeatures.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state>
+          <caret column="80" selection-start-column="75" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AllFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
-          <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
+          <caret line="254" column="20" lean-forward="true" selection-start-line="254" selection-start-column="20" selection-end-line="254" selection-end-column="20" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

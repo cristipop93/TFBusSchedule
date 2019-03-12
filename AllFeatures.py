@@ -63,13 +63,34 @@ def preprocess_targets(buss_dataframe):
     return output_targets
 
 
-training_examples = preprocess_features(buss_dataframe.head(15000))
+def linear_scale(series):
+    min_val = series.min()
+    max_val = series.max()
+    scale = (max_val - min_val) / 2.0
+    return series.apply(lambda x: ((x - min_val) / scale) - 1.0)
+
+
+def normalize_linear_scale(examples_dataframe):
+    """Returns a version of the input `DataFrame` that has all its features normalized linearly."""
+    processed_features = pd.DataFrame()
+    processed_features["vehicleType"] = linear_scale(examples_dataframe["vehicleType"])
+    processed_features["month"] = linear_scale(examples_dataframe["month"])
+    processed_features["day"] = linear_scale(examples_dataframe["day"])
+    processed_features["hour"] = linear_scale(examples_dataframe["hour"])
+    processed_features["minute"] = linear_scale(examples_dataframe["minute"])
+    processed_features["temperature"] = linear_scale(examples_dataframe["temperature"])
+    processed_features["pType"] = linear_scale(examples_dataframe["pType"])
+    return processed_features
+
+
+normalized_dataframe = normalize_linear_scale(preprocess_features(buss_dataframe))
+training_examples = normalized_dataframe.head(15000)
 print(training_examples.describe())
 
 training_targets = preprocess_targets(buss_dataframe.head(15000))
 print(training_targets.describe())
 
-validation_examples = preprocess_features(buss_dataframe.tail(5000))
+validation_examples = normalized_dataframe.tail(5000)
 print(validation_examples.describe())
 
 validation_targets = preprocess_targets(buss_dataframe.tail(5000))
@@ -121,6 +142,7 @@ def train_model(
         learning_rate,
         steps,
         batch_size,
+        hidden_units,
         training_examples,
         training_targets,
         validation_examples,
@@ -151,12 +173,21 @@ def train_model(
     periods = 10
     steps_per_period = steps / periods
 
-    # Create a linear regressor object.
+    # # Create a linear regressor object.
+    # my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+    # my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
+    # linear_regressor = tf.estimator.LinearRegressor(
+    #     feature_columns=construct_feature_columns(training_examples),
+    #     optimizer=my_optimizer
+    # )
+
+    # Create a DNNRegressor object.
     my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
-    linear_regressor = tf.estimator.LinearRegressor(
+    dnn_regressor = tf.estimator.DNNRegressor(
         feature_columns=construct_feature_columns(training_examples),
-        optimizer=my_optimizer
+        hidden_units=hidden_units,
+        optimizer=my_optimizer,
     )
 
     # Create input functions.
@@ -182,15 +213,15 @@ def train_model(
     validation_rmse = []
     for period in range(0, periods):
         # Train the model, starting from the prior state.
-        linear_regressor.train(
+        dnn_regressor.train(
             input_fn=training_input_fn,
             steps=steps_per_period,
         )
         # Take a break and compute predictions.
-        training_predictions = linear_regressor.predict(input_fn=predict_training_input_fn)
+        training_predictions = dnn_regressor.predict(input_fn=predict_training_input_fn)
         training_predictions = np.array([item['predictions'][0] for item in training_predictions])
 
-        validation_predictions = linear_regressor.predict(input_fn=predict_validation_input_fn)
+        validation_predictions = dnn_regressor.predict(input_fn=predict_validation_input_fn)
         validation_predictions = np.array([item['predictions'][0] for item in validation_predictions])
 
         # Compute training and validation loss.
@@ -215,13 +246,14 @@ def train_model(
     plt.legend()
     plt.show()
 
-    return linear_regressor
+    return dnn_regressor
 
 
-linear_regressor = train_model(
-    learning_rate=0.2,
-    steps=8000,
+dnn_regressor = train_model(
+    learning_rate=0.15,
+    steps=10000,
     batch_size=1000,
+    hidden_units=[10, 5, 5],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
