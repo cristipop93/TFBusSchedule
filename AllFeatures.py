@@ -139,7 +139,7 @@ def construct_feature_columns(input_features):
 
 
 def train_model(
-        learning_rate,
+        my_optimizer,
         steps,
         batch_size,
         hidden_units,
@@ -182,7 +182,6 @@ def train_model(
     # )
 
     # Create a DNNRegressor object.
-    my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
     dnn_regressor = tf.estimator.DNNRegressor(
         feature_columns=construct_feature_columns(training_examples),
@@ -250,11 +249,14 @@ def train_model(
 
 
 dnn_regressor = train_model(
-    learning_rate=0.15,
+    my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
     steps=10000,
     batch_size=1000,
-    hidden_units=[10, 5, 5],
+    hidden_units=[10, 8, 5],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
     validation_targets=validation_targets)
+
+# _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
+# plt.show()
