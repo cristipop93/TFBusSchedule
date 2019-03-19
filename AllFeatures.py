@@ -170,6 +170,7 @@ def train_model(
       A `LinearRegressor` object trained on the training data.
     """
 
+    global validation_root_mean_squared_error, training_root_mean_squared_error
     periods = 10
     steps_per_period = steps / periods
 
@@ -245,6 +246,9 @@ def train_model(
     plt.legend()
     plt.show()
 
+    print("Final RMSE (on training data):   %0.2f" % training_root_mean_squared_error)
+    print("Final RMSE (on validation data): %0.2f" % validation_root_mean_squared_error)
+
     return dnn_regressor
 
 
@@ -252,7 +256,7 @@ dnn_regressor = train_model(
     my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
     steps=10000,
     batch_size=1000,
-    hidden_units=[10, 8, 5],
+    hidden_units=[20, 20, 10, 5],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
