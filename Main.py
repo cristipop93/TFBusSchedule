@@ -23,6 +23,7 @@ buss_data = buss_data.reindex(
 
 print(buss_data.describe())
 
+
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     """Trains a linear regression model of one feature.
 
@@ -149,10 +150,30 @@ def train_model(learning_rate, steps, batch_size, input_feature="vehicleType"):
     display.display(calibration_data.describe())
 
     print("Final RMSE (on training data): %0.2f" % root_mean_squared_error)
-    plt.show()
+    # plt.show()
+    return linear_regressor
 
-train_model(
+
+linear_regressor = train_model(
     learning_rate=0.3,
-    steps=2000,
-    batch_size=500
+    steps=10,
+    batch_size=10
 )
+
+feature_spec = {'vehicleType': tf.FixedLenFeature(shape=1,
+                                                  dtype=tf.float32,
+                                                  default_value=1)}
+
+
+def serving_input_receiver_fn():
+    """An input receiver that expects a serialized tf.Example."""
+    serialized_tf_example = tf.placeholder(dtype=tf.string,
+                                           shape=1,
+                                           name='input_example_tensor')
+    receiver_tensors = {'examples': serialized_tf_example}
+    features = tf.parse_example(serialized_tf_example, feature_spec)
+    return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+
+
+linear_regressor.export_saved_model(export_dir_base='model',
+                                    serving_input_receiver_fn=serving_input_receiver_fn)

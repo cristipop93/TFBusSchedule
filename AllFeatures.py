@@ -98,7 +98,7 @@ print(validation_targets.describe())
 
 
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
-    """Trains a linear regression model of multiple features.
+    """Trains a regression model of multiple features.
 
     Args:
       features: pandas DataFrame of features
@@ -262,5 +262,85 @@ dnn_regressor = train_model(
     validation_examples=validation_examples,
     validation_targets=validation_targets)
 
+# ---------------------- FIRST TRY----------------------------
+#
+# feature_spec = {'idFrom': tf.FixedLenFeature(shape=1,
+#                                              dtype=tf.float32,
+#                                              default_value=1),
+#                 'idTo': tf.FixedLenFeature(shape=1,
+#                                            dtype=tf.float32,
+#                                            default_value=1),
+#                 'vehicleType': tf.FixedLenFeature(shape=1,
+#                                                   dtype=tf.float32,
+#                                                   default_value=1),
+#                 'month': tf.FixedLenFeature(shape=1,
+#                                             dtype=tf.float32,
+#                                             default_value=1),
+#                 'day': tf.FixedLenFeature(shape=1,
+#                                           dtype=tf.float32,
+#                                           default_value=1),
+#                 'hour': tf.FixedLenFeature(shape=1,
+#                                            dtype=tf.float32,
+#                                            default_value=1),
+#                 'minute': tf.FixedLenFeature(shape=1,
+#                                              dtype=tf.float32,
+#                                              default_value=1),
+#                 'holiday': tf.FixedLenFeature(shape=1,
+#                                               dtype=tf.float32,
+#                                               default_value=1),
+#                 'vacation': tf.FixedLenFeature(shape=1,
+#                                                dtype=tf.float32,
+#                                                default_value=1),
+#                 'temperature': tf.FixedLenFeature(shape=1,
+#                                                   dtype=tf.float32,
+#                                                   default_value=1),
+#                 'pType': tf.FixedLenFeature(shape=1,
+#                                             dtype=tf.float32,
+#                                             default_value=1),
+#                 }
+#
+#
+# def serving_input_receiver_fn():
+#     """An input receiver that expects a serialized tf.Example."""
+#     serialized_tf_example = tf.placeholder(dtype=tf.string,
+#                                            shape=1,
+#                                            name='input_example_tensor')
+#     receiver_tensors = {'examples': serialized_tf_example}
+#     features = tf.parse_example(serialized_tf_example, feature_spec)
+#     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+#
+#
+# dnn_regressor.export_saved_model(export_dir_base='model',
+#                                  serving_input_receiver_fn=serving_input_receiver_fn)
+# ------------------------------END FIRST TRY: 1553960524; 1553965306
+
+# ------------------------------ SECOND TRY------------------------------
+
+idFrom = tf.feature_column.numeric_column('idFrom')
+idTo = tf.feature_column.numeric_column('idTo')
+vehicleType = tf.feature_column.numeric_column('vehicleType')
+month = tf.feature_column.numeric_column('month')
+day = tf.feature_column.numeric_column('day')
+hour = tf.feature_column.numeric_column('hour')
+minute = tf.feature_column.numeric_column('minute')
+holiday = tf.feature_column.numeric_column('holiday')
+vacation = tf.feature_column.numeric_column('vacation')
+temperature = tf.feature_column.numeric_column('temperature')
+pType = tf.feature_column.numeric_column('pType')
+
+feature_columns = [idFrom, idTo, vehicleType, month, day, hour, minute, holiday, vacation, temperature, pType]
+feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
+export_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
+dnn_regressor.export_savedmodel('model', export_input_fn, as_text=False)
+
+
+# -------------------------------- END SECOND TRY: 1553967068, 1553969489
+
+# JUNK:
+
 # _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
 # plt.show()
+
+# converter = tf.lite.TFLiteConverter.from_saved_model("model")
+# tflite_model = converter.convert()
+# open("converted_model.tflite", "wb").write(tflite_model)
