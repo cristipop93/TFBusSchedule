@@ -67,7 +67,8 @@ def linear_scale(series):
     min_val = series.min()
     max_val = series.max()
     scale = (max_val - min_val) / 2.0
-    return series.apply(lambda x: ((x - min_val) / scale) - 1.0)
+    return series
+    # return series.apply(lambda x: ((x - min_val) / scale) - 1.0)
 
 
 def normalize_linear_scale(examples_dataframe):
@@ -253,10 +254,10 @@ def train_model(
 
 
 dnn_regressor = train_model(
-    my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
-    steps=1,
-    batch_size=10,
-    hidden_units=[1],
+    my_optimizer=tf.train.AdadeltaOptimizer(learning_rate=0.03),
+    steps=10000,
+    batch_size=1000,
+    hidden_units=[20, 20, 10, 5],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
