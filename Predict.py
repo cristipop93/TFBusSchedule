@@ -1,7 +1,22 @@
 from tensorflow.contrib import predictor
 import tensorflow as tf
 
-predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1555145123")
+inputs = {
+    'idFrom': 'idFrom:0',
+    'idTo': 'idTo:0',
+    'vehicleType': 'vehicleType:0',
+    'month': 'month:0',
+    'day': 'day:0',
+    'hour': 'hour:0',
+    'minute': 'minute:0',
+    'holiday': 'holiday:0',
+    'vacation': 'vacation:0',
+    'temperature': 'temperature:0',
+    'pType': 'pType:0'
+}
+
+predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1555182764",
+                                        input_names=inputs, output_names={'output': 'output'})
 
 
 # def _int64_feature(value):
@@ -31,19 +46,19 @@ example = tf.train.Example(features=tf.train.Features(feature={
     'pType': _float_feature([0])
 }))
 
-example2 = tf.train.Example(features=tf.train.Features(feature={
-    'idFrom': _float_feature([0]),
-    'idTo': _float_feature([1]),
-    'vehicleType': _float_feature([0]),
-    'month': _float_feature([4]),
-    'day': _float_feature([5]),
-    'hour': _float_feature([11]),
-    'minute': _float_feature([16]),
-    'holiday': _float_feature([1]),
-    'vacation': _float_feature([0]),
-    'temperature': _float_feature([23]),
-    'pType': _float_feature([1])
-}))
+example2 = {
+    'idFrom': [0],
+    'idTo': [1],
+    'vehicleType': [0],
+    'month': [4],
+    'day': [5],
+    'hour': [11],
+    'minute': [16],
+    'holiday': [1],
+    'vacation': [0],
+    'temperature': [23],
+    'pType': [1]
+}
 
-print(predict_fn({'inputs': [example.SerializeToString()]}))
-print(predict_fn({'inputs': [example2.SerializeToString()]}))
+# print(predict_fn({'inputs': [example.SerializeToString()]}))
+print(predict_fn(input_dict={"x": [[0, 1, 0, 4, 5, 11, 16, 1, 0, 23, 1]]}))

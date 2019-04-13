@@ -73,15 +73,15 @@ def linear_scale(series):
 
 def normalize_linear_scale(examples_dataframe):
     """Returns a version of the input `DataFrame` that has all its features normalized linearly."""
-    processed_features = pd.DataFrame()
-    processed_features["vehicleType"] = linear_scale(examples_dataframe["vehicleType"])
-    processed_features["month"] = linear_scale(examples_dataframe["month"])
-    processed_features["day"] = linear_scale(examples_dataframe["day"])
-    processed_features["hour"] = linear_scale(examples_dataframe["hour"])
-    processed_features["minute"] = linear_scale(examples_dataframe["minute"])
-    processed_features["temperature"] = linear_scale(examples_dataframe["temperature"])
-    processed_features["pType"] = linear_scale(examples_dataframe["pType"])
-    return processed_features
+    # processed_features = pd.DataFrame()
+    # processed_features["vehicleType"] = linear_scale(examples_dataframe["vehicleType"])
+    # processed_features["month"] = linear_scale(examples_dataframe["month"])
+    # processed_features["day"] = linear_scale(examples_dataframe["day"])
+    # processed_features["hour"] = linear_scale(examples_dataframe["hour"])
+    # processed_features["minute"] = linear_scale(examples_dataframe["minute"])
+    # processed_features["temperature"] = linear_scale(examples_dataframe["temperature"])
+    # processed_features["pType"] = linear_scale(examples_dataframe["pType"])
+    return examples_dataframe
 
 
 normalized_dataframe = normalize_linear_scale(preprocess_features(buss_dataframe))
@@ -172,7 +172,7 @@ def train_model(
     """
 
     global validation_root_mean_squared_error, training_root_mean_squared_error
-    periods = 10
+    periods = 1
     steps_per_period = steps / periods
 
     # Create a DNNRegressor object.
@@ -180,7 +180,7 @@ def train_model(
     dnn_regressor = tf.estimator.DNNRegressor(
         feature_columns=construct_feature_columns(training_examples),
         hidden_units=hidden_units,
-        optimizer=my_optimizer,
+        optimizer=my_optimizer
     )
 
     # Create input functions.
@@ -250,7 +250,7 @@ dnn_regressor = train_model(
     my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
     steps=100,
     batch_size=40,
-    hidden_units=[60, 40, 40, 30, 30, 20],
+    hidden_units=[1],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
@@ -268,19 +268,59 @@ feat_cols = [tf.feature_column.numeric_column('idFrom'),
              tf.feature_column.numeric_column('temperature'),
              tf.feature_column.numeric_column('pType')]
 
+# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+# default_batch_size = 1
+# serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
+# a = tf.parse_example(serialized_tf_example, feature_spec)
+# print(a)
+
+# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+#
+# serve_input_fun = tf.estimator.export.build_parsing_serving_input_receiver_fn(
+#     feature_spec,
+#     default_batch_size=None
+# )
+#
+# dnn_regressor.export_savedmodel(
+#     export_dir_base="model",
+#     serving_input_receiver_fn=serve_input_fun,
+#     as_text=False
+# )
+
+
+# def serving_input_receiver_fn():
+#     """An input receiver that expects a serialized tf.Example."""
+#     feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+#     default_batch_size = 1
+#     serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
+#     receiver_tensors = {'examples': serialized_tf_example}
+#     features = tf.parse_example(serialized_tf_example, feature_spec)
+#     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors, receiver_tensors_alternatives=feature_spec)
+#
+#
+# dnn_regressor.export_saved_model(export_dir_base='model',
+#                                  serving_input_receiver_fn=serving_input_receiver_fn)
+
+features = {
+    'idFrom': tf.placeholder(dtype=tf.float32, shape=[1], name='idFrom'),
+    'idTo': tf.placeholder(dtype=tf.float32, shape=[1], name='idTo'),
+    'vehicleType': tf.placeholder(dtype=tf.float32, shape=[1], name='vehicleType'),
+    'month': tf.placeholder(dtype=tf.float32, shape=[1], name='month'),
+    'day': tf.placeholder(dtype=tf.float32, shape=[1], name='day_placeholder'),
+    'hour': tf.placeholder(dtype=tf.float32, shape=[1], name='hour'),
+    'minute': tf.placeholder(dtype=tf.float32, shape=[1], name='minute'),
+    'holiday': tf.placeholder(dtype=tf.float32, shape=[1], name='holiday'),
+    'vacation': tf.placeholder(dtype=tf.float32, shape=[1], name='vacation'),
+    'temperature': tf.placeholder(dtype=tf.float32, shape=[1], name='temperature'),
+    'pType': tf.placeholder(dtype=tf.float32, shape=[1], name='pType')
+}
+
 
 def serving_input_receiver_fn():
-    """An input receiver that expects a serialized tf.Example."""
-    feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-    default_batch_size = 1
-    serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
-    receiver_tensors = {'examples': serialized_tf_example}
-    features = tf.parse_example(serialized_tf_example, feature_spec)
-    return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+    return tf.estimator.export.ServingInputReceiver(features, features)
 
 
-dnn_regressor.export_saved_model(export_dir_base='model',
-                                 serving_input_receiver_fn=serving_input_receiver_fn)
+dnn_regressor.export_savedmodel(export_dir_base='model', serving_input_receiver_fn=serving_input_receiver_fn, as_text=True)
 
 
 # _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
