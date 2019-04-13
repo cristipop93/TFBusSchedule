@@ -1,7 +1,7 @@
 from tensorflow.contrib import predictor
 import tensorflow as tf
 
-predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1554499492")
+predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1555145123")
 
 
 # def _int64_feature(value):

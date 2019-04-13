@@ -85,16 +85,16 @@ def normalize_linear_scale(examples_dataframe):
 
 
 normalized_dataframe = normalize_linear_scale(preprocess_features(buss_dataframe))
-training_examples = normalized_dataframe.head(15000)
+training_examples = normalized_dataframe.head(150000)
 print(training_examples.describe())
 
-training_targets = preprocess_targets(buss_dataframe.head(15000))
+training_targets = preprocess_targets(buss_dataframe.head(150000))
 print(training_targets.describe())
 
-validation_examples = normalized_dataframe.tail(5000)
+validation_examples = normalized_dataframe.tail(10000)
 print(validation_examples.describe())
 
-validation_targets = preprocess_targets(buss_dataframe.tail(5000))
+validation_targets = preprocess_targets(buss_dataframe.tail(10000))
 print(validation_targets.describe())
 
 
@@ -175,14 +175,6 @@ def train_model(
     periods = 10
     steps_per_period = steps / periods
 
-    # # Create a linear regressor object.
-    # my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
-    # my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
-    # linear_regressor = tf.estimator.LinearRegressor(
-    #     feature_columns=construct_feature_columns(training_examples),
-    #     optimizer=my_optimizer
-    # )
-
     # Create a DNNRegressor object.
     my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
     dnn_regressor = tf.estimator.DNNRegressor(
@@ -195,7 +187,8 @@ def train_model(
     training_input_fn = lambda: my_input_fn(
         training_examples,
         training_targets["secondsDelay"],
-        batch_size=batch_size)
+        batch_size=batch_size,
+        shuffle=False)
     predict_training_input_fn = lambda: my_input_fn(
         training_examples,
         training_targets["secondsDelay"],
@@ -245,7 +238,7 @@ def train_model(
     plt.plot(training_rmse, label="training")
     plt.plot(validation_rmse, label="validation")
     plt.legend()
-    plt.show()
+    # plt.show()
 
     print("Final RMSE (on training data):   %0.2f" % training_root_mean_squared_error)
     print("Final RMSE (on validation data): %0.2f" % validation_root_mean_squared_error)
@@ -254,134 +247,15 @@ def train_model(
 
 
 dnn_regressor = train_model(
-    my_optimizer=tf.train.AdadeltaOptimizer(learning_rate=0.03),
-    steps=10000,
-    batch_size=1000,
-    hidden_units=[20, 20, 10, 5],
+    my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
+    steps=100,
+    batch_size=40,
+    hidden_units=[60, 40, 40, 30, 30, 20],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
     validation_targets=validation_targets)
 
-# ---------------------- FIRST TRY----------------------------
-#
-# feature_spec = {'idFrom': tf.FixedLenFeature(shape=[None, 1],
-#                                              dtype=tf.float32),
-#                 'idTo': tf.FixedLenFeature(shape=[None, 1],
-#                                            dtype=tf.float32),
-#                 'vehicleType': tf.FixedLenFeature(shape=[None, 1],
-#                                                   dtype=tf.float32),
-#                 'month': tf.FixedLenFeature(shape=[None, 1],
-#                                             dtype=tf.float32),
-#                 'day': tf.FixedLenFeature(shape=[None, 1],
-#                                           dtype=tf.float32),
-#                 'hour': tf.FixedLenFeature(shape=[None, 1],
-#                                            dtype=tf.float32),
-#                 'minute': tf.FixedLenFeature(shape=[None, 1],
-#                                              dtype=tf.float32),
-#                 'holiday': tf.FixedLenFeature(shape=[None, 1],
-#                                               dtype=tf.float32),
-#                 'vacation': tf.FixedLenFeature(shape=[None, 1],
-#                                                dtype=tf.float32),
-#                 'temperature': tf.FixedLenFeature(shape=[None, 1],
-#                                                   dtype=tf.float32),
-#                 'pType': tf.FixedLenFeature(shape=[None, 1],
-#                                             dtype=tf.float32),
-#                 }
-
-
-# def serving_input_receiver_fn():
-#     """An input receiver that expects a serialized tf.Example."""
-#     idFrom = tf.placeholder(shape=None, dtype=tf.float32, name="idFrom")
-#     idTo = tf.placeholder(shape=None, dtype=tf.float32, name="idTo")
-#     vehicleType = tf.placeholder(shape=None, dtype=tf.float32, name="vehicleType")
-#     month = tf.placeholder(shape=None, dtype=tf.float32, name="month")
-#     day = tf.placeholder(shape=None, dtype=tf.float32, name="day")
-#     hour = tf.placeholder(shape=None, dtype=tf.float32, name="hour")
-#     minute = tf.placeholder(shape=None, dtype=tf.float32, name="minute")
-#     holiday = tf.placeholder(shape=None, dtype=tf.float32, name="holiday")
-#     vacation = tf.placeholder(shape=None, dtype=tf.float32, name="vacation")
-#     temperature = tf.placeholder(shape=None, dtype=tf.float32, name="temperature")
-#     pType = tf.placeholder(shape=None, dtype=tf.float32, name="pType")
-#
-#     receiver_tensors = {'idFrom': idFrom, 'idTo': idTo, 'vehicleType': vehicleType, 'month': month, 'day': day, 'hour': hour, 'minute': minute, 'holiday': holiday, 'vacation': vacation, 'temperature': temperature, 'pType': pType}
-#     # features = tf.parse_example(serialized_tf_example, feature_spec)
-#     return tf.estimator.export.build_raw_serving_input_receiver_fn(features=receiver_tensors)
-#
-#
-# dnn_regressor.export_saved_model(export_dir_base='model',
-#                                  serving_input_receiver_fn=serving_input_receiver_fn)
-# ------------------------------END FIRST TRY: 1553960524; 1553965306
-
-# ------------------------------ SECOND TRY------------------------------
-#
-# idFrom = tf.feature_column.numeric_column('idFrom')
-# idTo = tf.feature_column.numeric_column('idTo')
-# vehicleType = tf.feature_column.numeric_column('vehicleType')
-# month = tf.feature_column.numeric_column('month')
-# day = tf.feature_column.numeric_column('day')
-# hour = tf.feature_column.numeric_column('hour')
-# minute = tf.feature_column.numeric_column('minute')
-# holiday = tf.feature_column.numeric_column('holiday')
-# vacation = tf.feature_column.numeric_column('vacation')
-# temperature = tf.feature_column.numeric_column('temperature')
-# pType = tf.feature_column.numeric_column('pType')
-#
-# feature_columns = [idFrom, idTo, vehicleType, month, day, hour, minute, holiday, vacation, temperature, pType]
-# feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
-# export_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
-# dnn_regressor.export_savedmodel('model', export_input_fn, as_text=False)
-
-
-# -------------------------------- END SECOND TRY: 1553967068, 1553969489
-
-
-# ------------------------TAKE 3 ----------------------------
-# columns = [('idFrom', tf.int64),
-#            ('idTo', tf.int64),
-#            ('vehicleType', tf.int64),
-#            ('month', tf.int64),
-#            ('day', tf.int64),
-#            ('hour', tf.int64),
-#            ('minute', tf.int64),
-#            ('holiday', tf.int64),
-#            ('vacation', tf.int64),
-#            ('temperature', tf.int64),
-#            ('pType', tf.int64)]
-# feature_placeholders = {
-#  name: tf.placeholder(dtype, [1], name=name + "_placeholder")
-#  for name, dtype in columns
-# }
-# export_input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn(
-#     feature_placeholders)
-# path = dnn_regressor.export_savedmodel('model', export_input_fn, as_text=True)
-
-# ------------------------Fin take 3-----------------------1554057942  1554132299
-
-# ---------------------------take 4 --------------------------
-# def serving_input_fn():
-#     """An input receiver that expects a serialized tf.Example."""
-#     idFrom = tf.placeholder(shape=None, dtype=tf.float32, name="idFrom")
-#     idTo = tf.placeholder(shape=None, dtype=tf.float32, name="idTo")
-#     vehicleType = tf.placeholder(shape=None, dtype=tf.float32, name="vehicleType")
-#     month = tf.placeholder(shape=None, dtype=tf.float32, name="month")
-#     day = tf.placeholder(shape=None, dtype=tf.float32, name="day")
-#     hour = tf.placeholder(shape=None, dtype=tf.float32, name="hour")
-#     minute = tf.placeholder(shape=None, dtype=tf.float32, name="minute")
-#     holiday = tf.placeholder(shape=None, dtype=tf.float32, name="holiday")
-#     vacation = tf.placeholder(shape=None, dtype=tf.float32, name="vacation")
-#     temperature = tf.placeholder(shape=None, dtype=tf.float32, name="temperature")
-#     pType = tf.placeholder(shape=None, dtype=tf.float32, name="pType")
-#
-#     features = {'idFrom': idFrom, 'idTo': idTo, 'vehicleType': vehicleType, 'month': month, 'day': day, 'hour': hour, 'minute': minute, 'holiday': holiday, 'vacation': vacation, 'temperature': temperature, 'pType': pType}
-#     return tf.estimator.export.ServingInputReceiver(features, features)
-#
-#
-# dnn_regressor.export_savedmodel('model', serving_input_fn)
-
-# ---------------------------fin take 4 --------------------------
-
-# ---------------------------- take 5 ----------------------------
 feat_cols = [tf.feature_column.numeric_column('idFrom'),
              tf.feature_column.numeric_column('idTo'),
              tf.feature_column.numeric_column('vehicleType'),
@@ -404,40 +278,10 @@ def serving_input_receiver_fn():
     features = tf.parse_example(serialized_tf_example, feature_spec)
     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
 
-    # idFrom = tf.placeholder(shape=None, dtype=tf.float32, name="idFrom")
-    # idTo = tf.placeholder(shape=None, dtype=tf.float32, name="idTo")
-    # vehicleType = tf.placeholder(shape=None, dtype=tf.float32, name="vehicleType")
-    # month = tf.placeholder(shape=None, dtype=tf.float32, name="month")
-    # day = tf.placeholder(shape=None, dtype=tf.float32, name="day")
-    # hour = tf.placeholder(shape=None, dtype=tf.float32, name="hour")
-    # minute = tf.placeholder(shape=None, dtype=tf.float32, name="minute")
-    # holiday = tf.placeholder(shape=None, dtype=tf.float32, name="holiday")
-    # vacation = tf.placeholder(shape=None, dtype=tf.float32, name="vacation")
-    # temperature = tf.placeholder(shape=None, dtype=tf.float32, name="temperature")
-    # pType = tf.placeholder(shape=None, dtype=tf.float32, name="pType")
-    # receiver_tensors = {'idFrom': idFrom,
-    #                     'idTo': idTo,
-    #                     'vehicleType': vehicleType,
-    #                     'month': month,
-    #                     'day': day,
-    #                     'hour': hour,
-    #                     'minute': minute,
-    #                     'holiday': holiday,
-    #                     'vacation': vacation,
-    #                     'temperature': temperature,
-    #                     'pType': pType
-    #                     }
-    #
-    # features = tf.parse_example(serialized=serialized_tf_example, features=feature_spec)
-    # return tf.estimator.export.ServingInputReceiver(features=features, receiver_tensors=receiver_tensors)
-
 
 dnn_regressor.export_saved_model(export_dir_base='model',
                                  serving_input_receiver_fn=serving_input_receiver_fn)
 
-# ----------------------------- end take 5 -----------------------
-
-# JUNK:
 
 # _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
 # plt.show()
