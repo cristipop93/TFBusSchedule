@@ -1,22 +1,22 @@
 from tensorflow.contrib import predictor
 import tensorflow as tf
 
-inputs = {
-    'idFrom': 'idFrom:0',
-    'idTo': 'idTo:0',
-    'vehicleType': 'vehicleType:0',
-    'month': 'month:0',
-    'day': 'day:0',
-    'hour': 'hour:0',
-    'minute': 'minute:0',
-    'holiday': 'holiday:0',
-    'vacation': 'vacation:0',
-    'temperature': 'temperature:0',
-    'pType': 'pType:0'
-}
+# inputs = {
+#     'idFrom': 'idFrom:0',
+#     'idTo': 'idTo:0',
+#     'vehicleType': 'vehicleType:0',
+#     'month': 'month:0',
+#     'day': 'day:0',
+#     'hour': 'hour:0',
+#     'minute': 'minute:0',
+#     'holiday': 'holiday:0',
+#     'vacation': 'vacation:0',
+#     'temperature': 'temperature:0',
+#     'pType': 'pType:0'
+# }
 
-predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1555182764",
-                                        input_names=inputs, output_names={'output': 'output'})
+predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1555241802")
+                                        # input_names=inputs, output_names={'output': 'output'})
 
 
 # def _int64_feature(value):
@@ -61,4 +61,4 @@ example2 = {
 }
 
 # print(predict_fn({'inputs': [example.SerializeToString()]}))
-print(predict_fn(input_dict={"x": [[0, 1, 0, 4, 5, 11, 16, 1, 0, 23, 1]]}))
+print(predict_fn(input_dict=example2))

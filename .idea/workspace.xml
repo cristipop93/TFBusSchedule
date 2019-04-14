@@ -2,29 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e76dc4a1-d47e-4010-9390-824e68d9654e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/buildParsingServing/saved_model.pbtxt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.data-00001-of-00002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/buildRawServing/saved_model.pbtxt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/buildRawServing/variables/variables.data-00001-of-00002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/buildRawServing/variables/variables.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/noSerialization/variables/variables.data-00000-of-00001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/AllFeatures.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554585906/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554585906/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554585906/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554585906/variables/variables.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554623978/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554623978/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554623978/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554623978/variables/variables.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554643363/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554643363/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554643363/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554643363/variables/variables.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554839325/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554839325/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554839325/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1554839325/variables/variables.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1555145123/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1555145123/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1555145123/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/1555145123/variables/variables.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555183674/saved_model.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/model/noSerialization/saved_model.pbtxt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555183674/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.data-00000-of-00002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555183674/variables/variables.index" beforeDir="false" afterPath="$PROJECT_DIR$/model/noSerialization/variables/variables.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555185248/saved_model.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555185248/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/model/buildRawServing/variables/variables.data-00000-of-00002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/1555185248/variables/variables.index" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,23 +27,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AllFeatures.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="315" column="1" lean-forward="true" selection-start-line="315" selection-start-column="1" selection-end-line="315" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/1555183674/saved_model.pbtxt">
+        <entry file="file://$PROJECT_DIR$/keras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="974" column="18" selection-start-line="974" selection-start-column="18" selection-end-line="974" selection-end-column="18" />
+            <state relative-caret-position="1071">
+              <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,11 +51,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state relative-caret-position="272">
+              <caret line="17" column="92" selection-start-line="17" selection-start-column="92" selection-end-line="17" selection-end-column="92" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Convert.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -78,12 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>training_input_fn</find>
-      <find>.numeric</find>
-      <find>vehicletype</find>
-      <find>temperature</find>
-      <find>]]</find>
-      <find>idFrom</find>
       <find>feature.</find>
       <find>column</find>
       <find>input</find>
@@ -104,10 +100,16 @@
       <find>features</find>
       <find>output</find>
       <find>o</find>
-      <find>vacation</find>
       <find>idfrom</find>
-      <find>day</find>
       <find>vaca</find>
+      <find>build_pars</find>
+      <find>raw</find>
+      <find>vacation</find>
+      <find>day</find>
+      <find>signature</find>
+      <find>serving</find>
+      <find>default</find>
+      <find>serving_default</find>
     </findStrings>
     <replaceStrings>
       <replace>temperature</replace>
@@ -125,24 +127,28 @@
       <list>
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/data.csv" />
-        <option value="$PROJECT_DIR$/Convert.py" />
         <option value="$PROJECT_DIR$/Predict.py" />
         <option value="$PROJECT_DIR$/AllFeatures.py" />
+        <option value="$PROJECT_DIR$/keras.py" />
+        <option value="$PROJECT_DIR$/Convert.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1189" />
+    <option name="x" value="1317" />
     <option name="y" value="-144" />
-    <option name="width" value="1346" />
-    <option name="height" value="698" />
+    <option name="width" value="1311" />
+    <option name="height" value="640" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,7 +165,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,7 +192,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.AllFeatures">
+  <component name="RunManager" selected="Python.Convert">
     <configuration name="AllFeatures" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TFBussSchedule" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -272,11 +277,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="keras" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TFBussSchedule" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/keras.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Convert" />
+        <item itemvalue="Python.keras" />
         <item itemvalue="Python.AllFeatures" />
         <item itemvalue="Python.Predict" />
-        <item itemvalue="Python.Convert" />
         <item itemvalue="Python.Main" />
       </list>
     </recent_temporary>
@@ -307,18 +334,18 @@
     <frame x="1358" y="-144" width="1456" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49911818" visible="true" weight="0.20380817" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49911818" visible="true" weight="0.19252469" />
       <window_info id="Structure" order="1" sideWeight="0.50088185" side_tool="true" weight="0.23060648" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992948" visible="true" weight="0.4741036" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992948" weight="0.39043826" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42231077" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32934928" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32802126" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.4674635" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.4674635" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50070524" side_tool="true" weight="0.24701196" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32934928" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -450,13 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Convert.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/135709253/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5763">
@@ -471,36 +491,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555145123/saved_model.pb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="121" column="2" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555155760/saved_model.pb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="371" column="17" lean-forward="true" selection-start-line="371" selection-start-column="17" selection-end-line="371" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555177487/saved_model.pb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/model/1555145123/saved_model.pb" />
+    <entry file="file://$PROJECT_DIR$/model/1555155760/saved_model.pb" />
+    <entry file="file://$PROJECT_DIR$/model/1555177487/saved_model.pb" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow1/Lib/site-packages/tensorflow/contrib/predictor/predictor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow1/Lib/site-packages/tensorflow/python/estimator/export/export.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122">
-          <caret line="351" column="4" selection-start-line="351" selection-start-column="4" selection-end-line="351" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -525,20 +522,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555181158/saved_model.pb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="264" column="7" selection-start-line="264" selection-start-column="1" selection-end-line="264" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555182764/saved_model.pb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="277" column="4" selection-start-line="277" selection-start-column="1" selection-end-line="277" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/model/1555181158/saved_model.pb" />
+    <entry file="file://$PROJECT_DIR$/model/1555182764/saved_model.pb" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow1/Lib/site-packages/tensorflow/contrib/predictor/saved_model_predictor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
@@ -553,47 +538,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555182764/variables/variables.index">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/model/1555182764/variables/variables.index" />
+    <entry file="file://$PROJECT_DIR$/model/1555183418/saved_model.pbtxt" />
+    <entry file="file://$PROJECT_DIR$/model/graph.pbtxt" />
+    <entry file="file://$PROJECT_DIR$/model/1555183674/saved_model.pbtxt" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow1/Lib/site-packages/tensorflow/python/estimator/export/export.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="282" column="4" selection-start-line="282" selection-start-column="4" selection-end-line="282" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/1555240863/saved_model.pbtxt" />
+    <entry file="file://$PROJECT_DIR$/model/1555241802/saved_model.pbtxt" />
+    <entry file="file://$PROJECT_DIR$/model/buildRawServing/saved_model.pbtxt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158151">
+          <caret line="9303" column="5" selection-start-line="9303" selection-start-column="5" selection-end-line="9303" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/buildParsingServing/saved_model.pbtxt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159069">
+          <caret line="9357" column="26" selection-start-line="9357" selection-start-column="26" selection-end-line="9357" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/noSerialization/saved_model.pbtxt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16830">
+          <caret line="990" column="15" selection-start-line="990" selection-start-column="15" selection-end-line="990" selection-end-column="15" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="272">
+          <caret line="17" column="92" selection-start-line="17" selection-start-column="92" selection-end-line="17" selection-end-column="92" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555183418/saved_model.pbtxt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10302">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/1555183674/saved_model.pbtxt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="974" column="18" selection-start-line="974" selection-start-column="18" selection-end-line="974" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/graph.pbtxt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="144">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AllFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="315" column="1" lean-forward="true" selection-start-line="315" selection-start-column="1" selection-end-line="315" selection-end-column="1" />
+        <state relative-caret-position="170">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/1555256486/saved_model.pbtxt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="923">
+          <caret line="9341" column="11" lean-forward="true" selection-start-line="9341" selection-start-column="11" selection-end-line="9341" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_model.h5">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Convert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

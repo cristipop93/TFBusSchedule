@@ -268,39 +268,6 @@ feat_cols = [tf.feature_column.numeric_column('idFrom'),
              tf.feature_column.numeric_column('temperature'),
              tf.feature_column.numeric_column('pType')]
 
-# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-# default_batch_size = 1
-# serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
-# a = tf.parse_example(serialized_tf_example, feature_spec)
-# print(a)
-
-# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-#
-# serve_input_fun = tf.estimator.export.build_parsing_serving_input_receiver_fn(
-#     feature_spec,
-#     default_batch_size=None
-# )
-#
-# dnn_regressor.export_savedmodel(
-#     export_dir_base="model",
-#     serving_input_receiver_fn=serve_input_fun,
-#     as_text=False
-# )
-
-
-# def serving_input_receiver_fn():
-#     """An input receiver that expects a serialized tf.Example."""
-#     feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-#     default_batch_size = 1
-#     serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
-#     receiver_tensors = {'examples': serialized_tf_example}
-#     features = tf.parse_example(serialized_tf_example, feature_spec)
-#     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors, receiver_tensors_alternatives=feature_spec)
-#
-#
-# dnn_regressor.export_saved_model(export_dir_base='model',
-#                                  serving_input_receiver_fn=serving_input_receiver_fn)
-
 features = {
     'idFrom': tf.placeholder(dtype=tf.float32, shape=[1], name='idFrom'),
     'idTo': tf.placeholder(dtype=tf.float32, shape=[1], name='idTo'),
@@ -315,12 +282,46 @@ features = {
     'pType': tf.placeholder(dtype=tf.float32, shape=[1], name='pType')
 }
 
+# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+# default_batch_size = 1
+# serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
+# a = tf.parse_example(serialized_tf_example, feature_spec)
+# print(a)
 
-def serving_input_receiver_fn():
-    return tf.estimator.export.ServingInputReceiver(features, features)
+feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+
+serve_input_fun = tf.estimator.export.build_raw_serving_input_receiver_fn(
+    features,
+    default_batch_size=None
+)
+
+dnn_regressor.export_savedmodel(
+    export_dir_base="model",
+    serving_input_receiver_fn=serve_input_fun,
+    as_text=True
+)
 
 
-dnn_regressor.export_savedmodel(export_dir_base='model', serving_input_receiver_fn=serving_input_receiver_fn, as_text=True)
+# def serving_input_receiver_fn():
+#     """An input receiver that expects a serialized tf.Example."""
+#     feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
+#     default_batch_size = 1
+#     serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
+#     receiver_tensors = {'examples': serialized_tf_example}
+#     features = tf.parse_example(serialized_tf_example, feature_spec)
+#     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
+#
+#
+# dnn_regressor.export_saved_model(export_dir_base='model',
+#                                  serving_input_receiver_fn=serving_input_receiver_fn)
+
+#
+#
+# def serving_input_receiver_fn():
+#     return tf.estimator.export.ServingInputReceiver(features, features)
+#
+#
+# dnn_regressor.export_savedmodel(export_dir_base='model', serving_input_receiver_fn=serving_input_receiver_fn, as_text=True)
 
 
 # _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
