@@ -479,7 +479,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_41b54756fac942cb918b63aa66196986/part"
+            string_val: "_temp_195a85613ed145749b393c4efd2cb0d8/part"
           }
         }
       }
