@@ -172,7 +172,7 @@ def train_model(
     """
 
     global validation_root_mean_squared_error, training_root_mean_squared_error
-    periods = 1
+    periods = 10
     steps_per_period = steps / periods
 
     # Create a DNNRegressor object.
@@ -248,25 +248,13 @@ def train_model(
 
 dnn_regressor = train_model(
     my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.3),
-    steps=100,
-    batch_size=40,
-    hidden_units=[1],
+    steps=10000,
+    batch_size=1000,
+    hidden_units=[20, 20, 10, 5],
     training_examples=training_examples,
     training_targets=training_targets,
     validation_examples=validation_examples,
     validation_targets=validation_targets)
-
-feat_cols = [tf.feature_column.numeric_column('idFrom'),
-             tf.feature_column.numeric_column('idTo'),
-             tf.feature_column.numeric_column('vehicleType'),
-             tf.feature_column.numeric_column('month'),
-             tf.feature_column.numeric_column('day'),
-             tf.feature_column.numeric_column('hour'),
-             tf.feature_column.numeric_column('minute'),
-             tf.feature_column.numeric_column('holiday'),
-             tf.feature_column.numeric_column('vacation'),
-             tf.feature_column.numeric_column('temperature'),
-             tf.feature_column.numeric_column('pType')]
 
 features = {
     'idFrom': tf.placeholder(dtype=tf.float32, shape=[1], name='idFrom'),
@@ -282,14 +270,6 @@ features = {
     'pType': tf.placeholder(dtype=tf.float32, shape=[1], name='pType')
 }
 
-# feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-# default_batch_size = 1
-# serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
-# a = tf.parse_example(serialized_tf_example, feature_spec)
-# print(a)
-
-feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-
 serve_input_fun = tf.estimator.export.build_raw_serving_input_receiver_fn(
     features,
     default_batch_size=None
@@ -300,33 +280,3 @@ dnn_regressor.export_savedmodel(
     serving_input_receiver_fn=serve_input_fun,
     as_text=True
 )
-
-
-# def serving_input_receiver_fn():
-#     """An input receiver that expects a serialized tf.Example."""
-#     feature_spec = tf.feature_column.make_parse_example_spec(feat_cols)
-#     default_batch_size = 1
-#     serialized_tf_example = tf.placeholder(dtype=tf.string, shape=[default_batch_size], name='tf_example')
-#     receiver_tensors = {'examples': serialized_tf_example}
-#     features = tf.parse_example(serialized_tf_example, feature_spec)
-#     return tf.estimator.export.ServingInputReceiver(features, receiver_tensors)
-#
-#
-# dnn_regressor.export_saved_model(export_dir_base='model',
-#                                  serving_input_receiver_fn=serving_input_receiver_fn)
-
-#
-#
-# def serving_input_receiver_fn():
-#     return tf.estimator.export.ServingInputReceiver(features, features)
-#
-#
-# dnn_regressor.export_savedmodel(export_dir_base='model', serving_input_receiver_fn=serving_input_receiver_fn, as_text=True)
-
-
-# _ = training_examples.hist(bins=40, figsize=(18, 12), xlabelsize=10)
-# plt.show()
-
-# converter = tf.lite.TFLiteConverter.from_saved_model("model")
-# tflite_model = converter.convert()
-# open("converted_model.tflite", "wb").write(tflite_model)

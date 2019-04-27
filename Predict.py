@@ -15,7 +15,7 @@ import tensorflow as tf
 #     'pType': 'pType:0'
 # }
 
-predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/buildRawServing", signature_def_key="predict")
+predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1556363640", signature_def_key="predict")
                                         # input_names=inputs, output_names={'output': 'output'})
 
 
@@ -52,9 +52,9 @@ example2 = {
     'vehicleType': [0],
     'month': [4],
     'day': [5],
-    'hour': [11],
+    'hour': [7],
     'minute': [16],
-    'holiday': [1],
+    'holiday': [0],
     'vacation': [0],
     'temperature': [23],
     'pType': [1]
