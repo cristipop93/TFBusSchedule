@@ -15,7 +15,7 @@ import tensorflow as tf
 #     'pType': 'pType:0'
 # }
 
-predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1557588208", signature_def_key="predict")
+predict_fn = predictor.from_saved_model("D:/Python Workspace/TFBussSchedule/model/1557607409", signature_def_key="predict")
                                         # input_names=inputs, output_names={'output': 'output'})
 
 
@@ -47,18 +47,21 @@ example = tf.train.Example(features=tf.train.Features(feature={
 }))
 
 example2 = {
-    'idFrom': [1],
-    'idTo': [8],
-    'vehicleType': [0],
-    'month': [4],
-    'day': [5],
+    'idFrom': [6],
+    'idTo': [5],
+    'vehicleType': [1],
+    'month': [10],
+    'day': [1],
     'hour': [7],
-    'minute': [16],
+    'minute': [50],
     'holiday': [0],
     'vacation': [0],
-    'temperature': [12],
-    'pType': [0]
+    'temperature': [8],
+    'pType': [1]
 }
+
+# 16,21,1,10,1,17,58,0,0,17,1,426
+# ~~ 381
 
 # print(predict_fn({'inputs': [example.SerializeToString()]}))
 print(predict_fn(input_dict=example2))
