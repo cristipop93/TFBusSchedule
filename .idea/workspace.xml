@@ -4,15 +4,8 @@
     <list default="true" id="e76dc4a1-d47e-4010-9390-824e68d9654e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/AllFeatures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Convert.py" beforeDir="false" afterPath="$PROJECT_DIR$/Convert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/buildParsingServing/saved_model.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.data-00000-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.data-00001-of-00002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/buildParsingServing/variables/variables.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/noSerialization/saved_model.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/noSerialization/variables/variables.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/noSerialization/variables/variables.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AllFeatures.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="248" column="28" lean-forward="true" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+            <state relative-caret-position="68">
+              <caret line="79" column="75" selection-start-line="79" selection-start-column="75" selection-end-line="79" selection-end-column="75" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -34,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/socket.pyi">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9214">
-              <caret line="543" column="8" selection-start-line="543" selection-start-column="8" selection-end-line="543" selection-end-column="8" />
+            <state relative-caret-position="238">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -46,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="55" column="19" lean-forward="true" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            <state relative-caret-position="139">
+              <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -77,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/Convert.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -112,9 +105,7 @@
       <find>ServingInputReceiver</find>
       <find>vehicle</find>
       <find>dtype</find>
-      <find>false</find>
       <find>my_input_fn</find>
-      <find>true</find>
       <find>parse_example</find>
       <find>example</find>
       <find>parseexample</find>
@@ -135,6 +126,8 @@
       <find>vacation</find>
       <find>numpy</find>
       <find>np</find>
+      <find>false</find>
+      <find>true</find>
     </findStrings>
     <replaceStrings>
       <replace>temperature</replace>
@@ -151,13 +144,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Main.py" />
-        <option value="$PROJECT_DIR$/data.csv" />
         <option value="$PROJECT_DIR$/keras.py" />
         <option value="$PROJECT_DIR$/InterpretTFLite.py" />
         <option value="$PROJECT_DIR$/Socket.py" />
+        <option value="$PROJECT_DIR$/Convert.py" />
         <option value="$PROJECT_DIR$/AllFeatures.py" />
         <option value="$PROJECT_DIR$/Predict.py" />
-        <option value="$PROJECT_DIR$/Convert.py" />
+        <option value="$PROJECT_DIR$/data.csv" />
       </list>
     </option>
   </component>
@@ -175,6 +168,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -422,7 +416,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -451,7 +444,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Predict">
+  <component name="RunManager" selected="Python.AllFeatures">
     <configuration name="AllFeatures" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TFBussSchedule" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -559,8 +552,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Predict" />
         <item itemvalue="Python.AllFeatures" />
+        <item itemvalue="Python.Predict" />
         <item itemvalue="Python.Socket" />
         <item itemvalue="Python.Convert" />
         <item itemvalue="Python.keras" />
@@ -760,13 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="93" selection-start-column="81" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow1/Lib/site-packages/tensorflow/python/framework/ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -789,22 +775,10 @@
     <entry file="file://$PROJECT_DIR$/model/1555183674/saved_model.pbtxt" />
     <entry file="file://$PROJECT_DIR$/model/1555240863/saved_model.pbtxt" />
     <entry file="file://$PROJECT_DIR$/model/1555241802/saved_model.pbtxt" />
-    <entry file="file://$PROJECT_DIR$/model/noSerialization/saved_model.pbtxt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16830">
-          <caret line="990" column="15" selection-start-line="990" selection-start-column="15" selection-end-line="990" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/model/noSerialization/saved_model.pbtxt" />
     <entry file="file://$PROJECT_DIR$/model/1555256486/saved_model.pbtxt" />
     <entry file="file://$PROJECT_DIR$/my_model.h5" />
-    <entry file="file://$PROJECT_DIR$/model/buildParsingServing/saved_model.pbtxt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="9358" column="11" lean-forward="true" selection-start-line="9358" selection-start-column="11" selection-end-line="9358" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/model/buildParsingServing/saved_model.pbtxt" />
     <entry file="file://$PROJECT_DIR$/model/converted_model.tflite">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -841,9 +815,10 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Socket.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/socket.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9214">
+        <state relative-caret-position="144">
           <caret line="543" column="8" selection-start-line="543" selection-start-column="8" selection-end-line="543" selection-end-column="8" />
         </state>
       </provider>
@@ -862,6 +837,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Convert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/InterpretTFLite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -872,37 +854,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="55" column="19" lean-forward="true" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        <state relative-caret-position="139">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Convert.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AllFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="248" column="28" lean-forward="true" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+        <state relative-caret-position="68">
+          <caret line="79" column="75" selection-start-line="79" selection-start-column="75" selection-end-line="79" selection-end-column="75" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
         </state>
       </provider>
     </entry>

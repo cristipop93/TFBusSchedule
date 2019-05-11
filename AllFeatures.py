@@ -85,16 +85,16 @@ def normalize_linear_scale(examples_dataframe):
 
 
 normalized_dataframe = normalize_linear_scale(preprocess_features(buss_dataframe))
-training_examples = normalized_dataframe.head(150000)
+training_examples = normalized_dataframe.head(92800)
 print(training_examples.describe())
 
-training_targets = preprocess_targets(buss_dataframe.head(150000))
+training_targets = preprocess_targets(buss_dataframe.head(92800))
 print(training_targets.describe())
 
-validation_examples = normalized_dataframe.tail(10000)
+validation_examples = normalized_dataframe.tail(23200)
 print(validation_examples.describe())
 
-validation_targets = preprocess_targets(buss_dataframe.tail(10000))
+validation_targets = preprocess_targets(buss_dataframe.tail(23200))
 print(validation_targets.describe())
 
 
